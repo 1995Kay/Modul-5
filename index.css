@@ -37,11 +37,10 @@
   border-radius: 0.5rem;
 }
 
-/* Entweder direkt als rechter Rahmen für die linke Spalte / Liste */
 .sidebar-links {
-  border-right: 2px solid #5f5e5e; /* Bestimmt Dicke und Farbe der Linie */
-  height: 100%; /* Stellt sicher, dass die Linie die volle Höhe der Sidebar einnimmt */
-  padding: 0 1rem; /* Optional: Abstand zwischen den Links und der Linie */
+  border-right: 2px solid #5f5e5e;
+  height: 100%;
+  padding: 0 1rem;
 }
 .main-notizen {
   display: flex;
@@ -65,5 +64,18 @@
   height: 100%;
 
   font-size: 1rem;
-  resize: none; /* Verhindert das Ändern der Größe des Textbereichs */
+  resize: none;
+}
+.note-card {
+  display: flex;
+  flex-direction: column;
+  border-radius: 0.5rem;
+  padding: 1rem;
+  gap: 0.5rem;
+  cursor: pointer;
+  align-items: flex-start;
+  width: 10rem;
+  height: 100%;
+  background-color: #24d3ff;
+  margin: 1rem;
 }
