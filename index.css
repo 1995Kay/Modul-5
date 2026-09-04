@@ -1,97 +1,69 @@
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-}
-
-.card-container {
+.main {
   display: flex;
-  height: 100vh;
-  overflow: hidden;
-}
-
-.sidebar {
-  width: 280px;
-  border-right: 1px solid #757575;
-  padding: 20px;
-}
-.btn-create {
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  background-color: #f755e6;
-  color: white;
-  border: none;
-  border-radius: 4px;
-  padding: 15px;
-  font-size: 16px;
-  cursor: pointer;
-}
-.main-content {
-  flex: 1;
-  padding: 30px;
-  display: flex;
-  flex-direction: column;
-}
-
-.header-row {
-  display: flex;
+  flex-direction: row;
   justify-content: space-between;
   align-items: flex-start;
-  margin-bottom: 25px;
+  height: 60rem;
+  width: 117rem;
+  background-color: #f0f0f0;
+  padding: 1rem;
+  gap: 1rem;
 }
 
-.title-input {
-  flex: 1;
-  font-size: 42px;
-  font-weight: bold;
-  color: #888888;
-  border: none;
-  outline: none;
-  background: transparent;
-}
-
-.title-input::placeholder {
-  color: #888888;
-}
-
-.action-buttons {
+#new-notiz {
   display: flex;
-  gap: 10px;
-  margin-left: 20px;
-}
-
-.btn-icon {
-  background-color: #f755e6;
-  color: white;
+  flex-direction: column;
+  width: 18rem;
+  height: 8rem;
+  border-radius: 0.5rem;
+  background-color: #fc00a8;
   border: none;
-  border-radius: 4px;
-  width: 50px;
-  height: 50px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   cursor: pointer;
 }
-
-.icon {
-  width: 24px;
-  height: 24px;
+.right-buttons {
+  display: flex;
+  gap: 1rem;
 }
-
-.content-input {
-  flex: 1;
-  font-size: 22px;
-  color: #888888;
+#save {
+  cursor: pointer;
+  background-color: #00fc00;
   border: none;
-  outline: none;
-  resize: none;
-  background: transparent;
+  border-radius: 0.5rem;
+}
+#delete {
+  cursor: pointer;
+  background-color: #fc0000;
+  border: none;
+  border-radius: 0.5rem;
 }
 
-.content-input::placeholder {
-  color: #888888;
+/* Entweder direkt als rechter Rahmen für die linke Spalte / Liste */
+.sidebar-links {
+  border-right: 2px solid #5f5e5e; /* Bestimmt Dicke und Farbe der Linie */
+  height: 100%; /* Stellt sicher, dass die Linie die volle Höhe der Sidebar einnimmt */
+  padding: 0 1rem; /* Optional: Abstand zwischen den Links und der Linie */
+}
+.main-notizen {
+  display: flex;
+  flex-direction: column;
+  width: 80rem;
+  height: 100%;
+  border-radius: 0.5rem;
+  background-color: #ffffff;
+  padding: 1rem;
+  gap: 1rem;
+}
+#main-titel {
+  width: 100%;
+  height: 3rem;
+
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+#main-text {
+  width: 100%;
+  height: 100%;
+
+  font-size: 1rem;
+  resize: none; /* Verhindert das Ändern der Größe des Textbereichs */
 }
