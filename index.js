@@ -39,14 +39,46 @@ function renderNotes() {
 
   notizen.forEach((notiz) => {
     const notizHTML = `
-      <div class="note-card">
-        <h3>${notiz.title}</h3>
-        <p>${notiz.body}</p>
-      </div>
-    `;
+  <div class="note-card" onclick="loadNotiz(${notiz.id})">
+    <h3>${notiz.title}</h3>
+    <p>${notiz.body}</p>
+  </div>
+`;
 
     listContainer.innerHTML += notizHTML;
   });
 }
 
-function deleteNotiz() {}
+function deleteNotiz() {
+  if (aktuelleNotizId === null) {
+    alert("Bitte wähle zuerst eine Notiz aus, die du löschen möchtest.");
+    return;
+  }
+
+  notizen = notizen.filter((notiz) => notiz.id !== aktuelleNotizId);
+  localStorage.setItem("notizen", JSON.stringify(notizen));
+
+  document.getElementById("main-titel").value = "";
+  document.getElementById("main-text").value = "";
+  aktuelleNotizId = null;
+
+  renderNotes();
+}
+
+function loadNotiz(id) {
+  const gefundeneNotiz = notizen.find((notiz) => {
+    return notiz.id === id;
+  });
+
+  document.getElementById("main-titel").value = gefundeneNotiz.title;
+  document.getElementById("main-text").value = gefundeneNotiz.body;
+}
+function loadNotiz(id) {
+  const gefundeneNotiz = notizen.find((notiz) => notiz.id === id);
+
+  aktuelleNotizId = id;
+
+  document.getElementById("main-titel").value = gefundeneNotiz.title;
+  document.getElementById("main-text").value = gefundeneNotiz.body;
+}
+let aktuelleNotizId = null;
