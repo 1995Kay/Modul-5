@@ -1,4 +1,5 @@
 let notizen = [];
+let aktuelleNotizId = null;
 
 const gespeicherteNotizen = localStorage.getItem("notizen");
 if (gespeicherteNotizen) {
@@ -6,23 +7,37 @@ if (gespeicherteNotizen) {
   console.log("Geladene Notizen beim Start:", notizen);
   renderNotes();
 }
-
+function createNewNotiz() {
+  document.getElementById("main-titel").value = "";
+  document.getElementById("main-text").value = "";
+}
 function saveNotiz() {
   const titelWert = document.getElementById("main-titel").value;
   const textWert = document.getElementById("main-text").value;
-
   if (titelWert === "" || textWert === "") {
     alert("Bitte fülle beide Felder aus!");
     return;
   }
+  if (aktuelleNotizId !== null) {
+    const notizIndex = notizen.findIndex(
+      (notiz) => notiz.id === aktuelleNotizId,
+    );
+    if (notizIndex !== -1) {
+      notizen[notizIndex] = {
+        ...notizen[notizIndex],
+        title: titelWert,
+        body: textWert,
+      };
+    }
+  } else {
+    const neueNotiz = {
+      id: Date.now(),
+      title: titelWert,
+      body: textWert,
+    };
+    notizen.push(neueNotiz);
+  }
 
-  const neueNotiz = {
-    id: Date.now(),
-    title: titelWert,
-    body: textWert,
-  };
-
-  notizen.push(neueNotiz);
   localStorage.setItem("notizen", JSON.stringify(notizen));
 
   document.getElementById("main-titel").value = "";
@@ -72,13 +87,5 @@ function loadNotiz(id) {
 
   document.getElementById("main-titel").value = gefundeneNotiz.title;
   document.getElementById("main-text").value = gefundeneNotiz.body;
-}
-function loadNotiz(id) {
-  const gefundeneNotiz = notizen.find((notiz) => notiz.id === id);
-
   aktuelleNotizId = id;
-
-  document.getElementById("main-titel").value = gefundeneNotiz.title;
-  document.getElementById("main-text").value = gefundeneNotiz.body;
 }
-let aktuelleNotizId = null;
